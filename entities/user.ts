@@ -1,33 +1,51 @@
-import {Entity, Column, PrimaryGeneratedColumn} from 'typeorm';
+import {Entity, Column, PrimaryGeneratedColumn, OneToMany} from 'typeorm';
+import { Basket } from './basket';
+import { contact } from './contact';
+import { order } from './order';
 
 @Entity()
 export class User {
+
+    constructor(pseudo:string, email:string, mdp:string){
+        this.pseudo = pseudo;
+        this.email = email;
+        this.mdp = mdp;
+}
  
     @PrimaryGeneratedColumn()
-    id_client: number;
+    id: number;
  
     @Column()
-    Name: string;
+    name: string;
  
     @Column()
     lastName: string;
  
     @Column()
-    Address: number;
+    address: number;
 
     @Column()
-    Phone: number;
+    phone: number;
 
     @Column()
-    Mail: number;
+    email: number;
 
     @Column()
-    Pseudo: number;
+    pseudo: string;
 
     @Column()
-    Password: number;
+    mdp: string;
 
-    @Column()
-    basket_id: number;
+    @Column("date")
+    dateinscription: Date;
+
+    @OneToMany( type => contact, contact => contact.user)
+    contact: contact[];
+
+    @OnetoOne( type => Basket, basket => basket.user)
+    basket: Basket[];
+
+    @OneToMany( type => order, order => order.user)
+    orders: order[];
  
 }
