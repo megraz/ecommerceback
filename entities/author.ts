@@ -1,17 +1,17 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm";
-import { product } from "./product";
+import { Product } from "./product";
 
 
 @Entity()
 
-export class author {
+export class Author {
     @PrimaryGeneratedColumn()
     id: number;
 
     @Column()
     name: string;
 
-    @OneToMany( type => product, product => product.author)
-    products: product[];
+    @OneToMany( type => Product, product => product.author)
+    products: Product[];
 
 }

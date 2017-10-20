@@ -1,11 +1,11 @@
-import {Entity, Column, PrimaryGeneratedColumn, OneToMany} from 'typeorm';
+import {Entity, Column, PrimaryGeneratedColumn, OneToMany, OneToOne} from 'typeorm';
 import { Basket } from './basket';
-import { contact } from './contact';
-import { order } from './order';
+import { Contact } from './contact';
+import { Order } from './order';
 
 @Entity()
 export class User {
-
+    
     constructor(pseudo:string, email:string, mdp:string){
         this.pseudo = pseudo;
         this.email = email;
@@ -28,7 +28,7 @@ export class User {
     phone: number;
 
     @Column()
-    email: number;
+    email: string;
 
     @Column()
     pseudo: string;
@@ -39,13 +39,13 @@ export class User {
     @Column("date")
     dateinscription: Date;
 
-    @OneToMany( type => contact, contact => contact.user)
-    contact: contact[];
+    @OneToMany( type => Contact, contact => contact.user)
+    contact: Contact[];
 
-    @OnetoOne( type => Basket, basket => basket.user)
+    @OneToOne( type => Basket, basket => basket.user)
     basket: Basket[];
 
-    @OneToMany( type => order, order => order.user)
-    orders: order[];
+    @OneToMany( type => Order, order => order.user)
+    orders: Order[];
  
 }

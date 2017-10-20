@@ -5,7 +5,7 @@ import { User } from "./user";
 
 @Entity()
 
-export class contact {
+export class Contact {
     @PrimaryGeneratedColumn()
     id: number;
 

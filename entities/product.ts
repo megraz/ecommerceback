@@ -1,11 +1,11 @@
 import {Entity, Column, PrimaryGeneratedColumn, ManyToOne, ManyToMany, JoinTable} from 'typeorm';
 import { Basket } from './basket';
-import { author } from './author';
-import { category } from './category';
-import { order } from './order';
+import { Author } from './author';
+import { Category } from './category';
+import { Order } from './order';
 
 @Entity()
-export class product {
+export class Product {
  
     @PrimaryGeneratedColumn()
     id: number;
@@ -25,17 +25,17 @@ export class product {
     @Column()
     price: number;
     
-    @ManyToOne(type => category, category => category.products)
-    category: category;
+    @ManyToOne(type => Category, category => category.products)
+    Category: Category;
 
-    @ManyToOne(type => author, author => author.products)
-    author: author;
+    @ManyToOne(type => Author, author => author.products)
+    Author: Author;
     
     @ManyToMany(type => Basket, basket => basket.products)
     @JoinTable()
-    baskets: category;
+    baskets: Category[];
 
-    @ManyToMany(type => order, order => order.products)
+    @ManyToMany(type => Order, order => order.products)
     @JoinTable()
-    orders: order[];
+    orders: Order[];
 }
