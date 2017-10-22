@@ -16,7 +16,7 @@ export class Product {
     @Column()
     name: string;
  
-    @Column("texte")
+    @Column("text")
     description: string;
 
     @Column()
