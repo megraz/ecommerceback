@@ -2,7 +2,6 @@ import { DbProduct } from "../database/db-product";
 import { Router } from "express";
 
 
-
 const db = new DbProduct();
 
 export const routerProduct = Router();

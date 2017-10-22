@@ -2,8 +2,6 @@ import { createConnection, getConnection, Repository } from "typeorm";
 import { User } from "../entities/user";
 
 
-
-
 export class DbUser {
     private getRepo(): Repository<User> {
         return getConnection().getRepository(User);
