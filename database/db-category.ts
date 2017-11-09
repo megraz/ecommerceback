@@ -1,5 +1,6 @@
 import { createConnection, Repository, getConnection } from "typeorm";
 import { Category } from "../entities/category";
+import { Author } from "../entities/author";
 
 
 export class DbCategory {
@@ -19,5 +20,8 @@ export class DbCategory {
     removeCategory(id:number): Promise<any> {
         return this.getRepo().removeById(id);
     }
+    modifyCategory(cat:Category):Promise<void>{
+        return this.getRepo().updateById(cat.id, cat);
+}
 
 }

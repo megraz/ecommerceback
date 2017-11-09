@@ -8,6 +8,7 @@
         "express": "^4.16.2",
         "mysql": "^2.15.0",
         "reflect-metadata": "^0.1.10",
+        "sha1": "^1.1.1",
         "typeorm": "^0.1.0"
     },
     "devDependencies": {

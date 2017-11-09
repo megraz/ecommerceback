@@ -1,5 +1,6 @@
 import { createConnection, getConnection, Repository } from "typeorm";
 import { User } from "../entities/user";
+var sha1 = require('sha1');
 
 
 export class DbUser {
@@ -22,5 +23,13 @@ export class DbUser {
     modifyUser(user: User): Promise<void> {
         return this.getRepo().updateById(user.id,user);
     }
+
+//     getUserByLogin(pseudo:string, mdp:string):Promise<User>{
+//         return this.getRepo().findOne({pseudo:pseudo, mdp:mdp})
+//     }
+
+//     getUserByToken(token:string):Promise<User>{
+//         return this.getRepo().findOne({token:token})
+// }
 
 }

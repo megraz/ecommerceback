@@ -21,6 +21,11 @@ routerCategory.post('/', (req,resp)=> {
     .catch((error) => resp.status(500).send(error));
 });
 
+routerCategory.patch('/', (req, resp)=>{
+    db.modifyCategory(req.body).then((catg)=>resp.json(catg))
+    .catch((error)=>resp.status(500).send(error))
+})
+
 routerCategory.delete('/:id', (req,resp)=> {
     db.removeCategory(req.params.id).then(category => resp.json(category))
     .catch((error) => resp.status(500).send(error));;

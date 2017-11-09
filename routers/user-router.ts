@@ -1,9 +1,9 @@
 import { Router } from "express";
 import { DbUser } from "../database/db-user";
+var sha1 = require('sha1');
 
 
 const db = new DbUser();
-
 export const routerUser = Router();
 
 routerUser.get('/', (req, resp) => {

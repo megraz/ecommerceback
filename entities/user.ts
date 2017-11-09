@@ -1,5 +1,5 @@
 import {Entity, Column, PrimaryGeneratedColumn, OneToMany, OneToOne} from 'typeorm';
-import { Basket } from './basket';
+// import { Basket } from './basket';
 import { Contact } from './contact';
 import { Order } from './order';
 
@@ -36,14 +36,17 @@ export class User {
     @Column()
     mdp: string;
 
+    @Column("text")
+    token: string;
+
     @Column("date")
     dateinscription: Date;
 
     @OneToMany( type => Contact, contact => contact.user)
     contact: Contact[];
 
-    @OneToOne( type => Basket, basket => basket.user)
-    basket: Basket[];
+    // @OneToOne( type => Basket, basket => basket.user)
+    // basket: Basket[];
 
     @OneToMany( type => Order, order => order.user)
     orders: Order[];

@@ -4,7 +4,6 @@ import { DbAuthor } from "../database/db-author";
 
 
 const db = new DbAuthor();
-
 export const routerAuthor = Router();
 
 routerAuthor.get('/', (req, resp) => {
@@ -20,6 +19,11 @@ routerAuthor.post('/', (req,resp)=> {
     db.addAuthor(req.body).then(author => resp.json(author))
     .catch((error) => resp.status(500).send(error));
 });
+
+routerAuthor.patch('/', (req, resp)=>{
+    db.modifyAuthor(req.body).then((author)=>resp.json(author))
+    .catch((error)=>resp.status(500).send(error))
+})
 
 routerAuthor.delete('/:id', (req,resp)=> {
     db.removeAuthor(req.params.id).then(author => resp.json(author))

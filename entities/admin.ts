@@ -13,4 +13,7 @@ export class Admin {
 
     @Column()
     mdp: string;
+    
+    @Column("text")
+    token: string;
 }
